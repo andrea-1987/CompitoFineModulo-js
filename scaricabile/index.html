@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <h1>Trova Lavoro</h1>
-    <input type="text" id="title" placeholder="insert title">
-    <input type="text" id="location" placeholder="insert location">
-    <button id="cerca" >Search</button>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav>
+      <h1>Search Job</h1>
+    </nav>
+    <main>
+      <div>
+        <input type="text" id="title" placeholder="insert title" />
+        <input type="text" id="location" placeholder="insert location" />
+      </div>
+      <button id="cerca">Search</button>
+    </main>
+    <div class="lista">
     <p id="risultati"></p>
-    <ul id="user">
-
-    </ul>
+    <ul id="user"></ul>
+    </div>
     <script src="./scaricabile.js"></script>
-</body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@700&family=PT+Sans&display=swap");
+    </style>
+  </body>
 </html>

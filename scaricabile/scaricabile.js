@@ -122,47 +122,109 @@ const jobs = [
     location: "US, NY, Saint Bonaventure",
   },
 ];
-
 const foundJobs = [];
 let counter = 0;
+const ul = document.querySelector("ul");
+const par = document.querySelector("p");
 const getInputs = function () {
   let inputTitle = document.querySelector("#title").value;
   let inputLocation = document.querySelector("#location").value;
   jobfinder(inputTitle, inputLocation);
 };
 const jobfinder = function (title, location) {
+  counter = 0;
+  ul.innerHTML = "";
   for (let i = 0; i < jobs.length; i++) {
+    foundJobs.push(jobs[i]);
     if (
-      jobs[i].title.toLowerCase().includes(title.toLowerCase()) &&
-      jobs[i].location.toLowerCase().includes(location.toLowerCase())
-    ) {
-      foundJobs.push(jobs[i]);
-    }
-    if (foundJobs.length > 0) {
-      counter = foundJobs.length;
-    }
-  }
-  find();
-};
-const ul = document.querySelector("ul");
-const par = document.querySelector("p");
-const find = function (onclickEvent) {
-  par.innerText = `Result : ${counter}`;
-  for (let i = 0; i < foundJobs.length; i++) {
-    ul.innerHTML += `<li> ${foundJobs[i].title} ${foundJobs[i].location}</li>`;
+      foundJobs[i].title.toLowerCase().includes(title.toLowerCase()) &&
+      foundJobs[i].location.toLowerCase().includes(location.toLowerCase()) > 0
+      ) {
+        counter++;
+        ul.innerHTML += `<li> ${foundJobs[i].title} ${foundJobs[i].location}</li>`;
+        par.innerText = `Result : ${counter}`;
+      }
+      if(!title && !location){
+        par.innerText="Plz complete any camp"
+        ul.innerHTML=""
+      }
   }
 };
-
 const button = document.querySelector("#cerca");
 button.addEventListener("click", getInputs);
-if(ul=getInputs){
-button.removeEventListener("click",getInputs)}
-// reset.addEventListener("click",getInputs)
+
+//----PROVA NUOVO METODO----\\
+
+// const found = {
+//   title: "",
+//   location: "",
+// };
+// let counter = 0;
+// const ul = document.querySelector("ul");
+// const par = document.querySelector("p");
+// const find = function (evKeyup) {
+//   ul.innerHTML = "";
+//   counter = 0;
+//   const inputValue = evKeyup.target.value.toLowerCase();
+//   if (evKeyup.target.id === "title") {
+//     found.title = inputValue;
+//   } else if (evKeyup.target.id === "location") {
+//     found.location = inputValue;
+//   }
+//   for (let i = 0; i < jobs.length; i++) {
+//     const foundJobs = jobs[i];
+//     if (
+//       foundJobs.title.toLowerCase().includes(found.title) &&
+//       foundJobs.location.toLowerCase().includes(found.location)
+//     ) {
+//       ul.innerHTML += `<li> ${foundJobs.title} ${foundJobs.location}</li>`;
+//       counter++;
+//       par.innerText = `Result : ${counter}`;
+//     }
+//   }
+// };
+// const inputTitle = document.querySelector("#title");
+// const inputLocation = document.querySelector("#location");
+
+// inputTitle.addEventListener("keyup", find);
+// inputLocation.addEventListener("keyup", find);
+
+////----QUESTO MI PIACE ASSAI!!!!!\\\\
+
+//---------WORKED---- ALIAS PORCATE \\
+// const jobfinder = function (title, location) {
+//   if (jobfinder>0) {
+//   for (let i = 0; i < jobs.length; i++) {
+//     jobs[i].title.toLowerCase().includes(title.toLowerCase()) &&
+//       jobs[i].location.toLowerCase().includes(location.toLowerCase());
+//     foundJobs.push(jobs[i]);
+//     counter = foundJobs.length
+//           }
+//         }else {
+//       alert("plz mettice qualcosa");
+//     }
+//     // if (foundJobs.length > 0) {
+//     // }
+//     find();
+//   }
+// };
+
 // const find = function () {
-  //   document.querySelector("#risultati").innerText = `Result : ${counter}`;
-  //   for (let i = 0; i < foundJobs.length; i++) {
-    //     document.querySelector(
-      //       "#user"
-      //     ).innerHTML += `<li>${foundJobs[i].title}${foundJobs[i].location}</li>`;
-      //   }
-      // };
+//   document.querySelector("#risultati").innerText = `Result : ${counter}`;
+//   for (let i = 0; i < foundJobs.length; i++) {
+//     document.querySelector(
+//       "#user"
+//     ).innerHTML += `<li>${foundJobs[i].title}${foundJobs[i].location}</li>`;
+//   }
+// };
+
+// const find=function(evOnclick){
+
+// }
+// const buttonResult=document.querySelector("#cerca")
+// const findFromButton=function(){
+//   for(let i=0;i<foundJobs.length;i++){
+//     const findFromButton=foundJobs[i]
+//     findFromButton.onclick=find
+//   }
+// }
